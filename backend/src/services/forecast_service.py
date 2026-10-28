@@ -5,7 +5,10 @@ from datetime import datetime, timedelta
 from math import sqrt
 from statistics import median
 
-from .dashboard_service import DashboardData, PublicationStrategy, select_forecast
+try:
+    from .dashboard_service import DashboardData, PublicationStrategy, select_forecast
+except ImportError:
+    from services.dashboard_service import DashboardData, PublicationStrategy, select_forecast
 
 
 QUARTERS = (

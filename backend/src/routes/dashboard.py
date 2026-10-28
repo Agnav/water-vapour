@@ -6,8 +6,12 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, Field
 
-from ..services.dashboard_service import PublicationStrategy, build_dashboard
-from ..utils.timestamps import require_whole_hour_utc
+try:
+    from ..services.dashboard_service import PublicationStrategy, build_dashboard
+    from ..utils.timestamps import require_whole_hour_utc
+except ImportError:
+    from services.dashboard_service import PublicationStrategy, build_dashboard
+    from utils.timestamps import require_whole_hour_utc
 
 
 router = APIRouter(prefix="/api/v1", tags=["dashboard"])

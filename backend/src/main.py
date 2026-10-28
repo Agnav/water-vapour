@@ -8,10 +8,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
 
-from .routes.dashboard import router as dashboard_router
-from .routes.forecasts import router as forecasts_router
-from .routes.health import router as health_router
-from .services.dashboard_service import load_dashboard_data
+try:  # Supports package imports in deployment environments.
+    from .routes.dashboard import router as dashboard_router
+    from .routes.forecasts import router as forecasts_router
+    from .routes.health import router as health_router
+    from .services.dashboard_service import load_dashboard_data
+except ImportError:  # Supports `fastapi dev src/main.py`.
+    from routes.dashboard import router as dashboard_router
+    from routes.forecasts import router as forecasts_router
+    from routes.health import router as health_router
+    from services.dashboard_service import load_dashboard_data
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

@@ -6,9 +6,14 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel
 
-from ..services.dashboard_service import PublicationStrategy
-from ..services.forecast_service import build_forecast_analysis
-from ..utils.timestamps import require_whole_hour_utc
+try:
+    from ..services.dashboard_service import PublicationStrategy
+    from ..services.forecast_service import build_forecast_analysis
+    from ..utils.timestamps import require_whole_hour_utc
+except ImportError:
+    from services.dashboard_service import PublicationStrategy
+    from services.forecast_service import build_forecast_analysis
+    from utils.timestamps import require_whole_hour_utc
 
 
 router = APIRouter(prefix="/api/v1", tags=["forecasts"])

@@ -6,7 +6,10 @@ from datetime import datetime, timedelta
 from enum import Enum
 from pathlib import Path
 
-from ..utils.timestamps import parse_source_utc
+try:
+    from ..utils.timestamps import parse_source_utc
+except ImportError:
+    from utils.timestamps import parse_source_utc
 
 
 DATA_DIRECTORY = Path(__file__).parent.parent / "data"
