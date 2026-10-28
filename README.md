@@ -4,6 +4,9 @@ A full-stack dashboard for exploring UK national wind-generation forecasts again
 
 The repository can run as one Docker container: the FastAPI service serves both the API and the compiled React single-page application (SPA).
 
+[https://water-vapour.vercel.app/](https://water-vapour.vercel.app/)
+
+
 ## Contents
 
 - [Features](#features)
