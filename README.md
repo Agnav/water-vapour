@@ -276,3 +276,5 @@ cd frontend && npm run build
 # Check the running service
 curl http://localhost:8000/health
 ```
+> [!NOTE]
+> This project is build using AI assisted workflow.
